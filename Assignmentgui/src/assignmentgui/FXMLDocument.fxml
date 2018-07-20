@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.*?> 
+<?import javafx.collections.*?> 
+<?import assignmentgui.*?> 
+ 
+<HBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="assignmentgui.FXMLDocumentController">
+    <children>
+        <VBox>
+            <children>
+                <HBox alignment="TOP_RIGHT">
+                    <children>
+                        <Button mnemonicParsing="false" text="Close" onAction="#closeForm"/>
+                    </children>
+                </HBox>
+                <Label text="Add New Person" />
+                <TextField fx:id="firstName"  promptText="First name" />
+                <TextField fx:id="lastName"  promptText="Last name" />
+                <TextField fx:id="adress"  promptText="Adress" />
+                <HBox fillHeight="true" >   
+                    <children>
+                        <Label text="Contract time(years):" />
+                        <ToggleButton fx:id="One" mnemonicParsing="false" text="One">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="conTime" />
+                            </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton fx:id="Two" mnemonicParsing="false" text="Two" toggleGroup="$conTime" />
+                    </children>
+                </HBox>
+                 
+                        <Label text="Inetrnet Flow:" />
+                        <ChoiceBox value="1 GB" fx:id="netFlow" >
+                 <items>
+                  <FXCollections fx:factory="observableArrayList">
+                  <String  fx:value="5 GB" />
+                  <String  fx:value="10 GB" />
+                  <String  fx:value="100 GB" />
+                  <String  fx:value="FLAT" />
+                  
+                  </FXCollections>
+                  </items>
+                 </ChoiceBox>
+                          
+                
+                  <Label text="Internet speed:" />
+                <ChoiceBox value="2 Mbit" fx:id="speed" >
+                 <items>
+                  <FXCollections fx:factory="observableArrayList">
+                  <String  fx:value="2 Mbit" />
+                  <String  fx:value="5 Mbit" />
+                  <String  fx:value="10 Mbit" />
+                  <String  fx:value="20 Mbit" />
+                  <String  fx:value="50 Mbit" />
+                  <String  fx:value="100 Mbit" />
+                  </FXCollections>
+                  </items>
+                 </ChoiceBox>
+
+                <HBox alignment="TOP_LEFT">
+                    <children>
+                        <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#savePerson" text="Save" />
+                        <Button fx:id="clearBtn" mnemonicParsing="false" onAction="#clearPerson" text="Clear" />
+                        <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#deletePerson" text="Delete" /><!-- DELETE -->
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <!-- SAVE + LIST -->
+        <Pane>
+            <TableView fx:id="tabela">
+                <columns>
+                    <TableColumn text="FirstName">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="firstName" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="LastName">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="lastName" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Adress">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="adress" />
+                        </cellValueFactory>                        
+                    </TableColumn>
+                    <TableColumn text="Contract Time">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="conTime" />
+                        </cellValueFactory>                        
+                    </TableColumn>
+                    <TableColumn text="Net Flow">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="netFlow" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Speed">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="speed" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        
+                    </FXCollections>
+                </items>
+            </TableView>
+        </Pane>
+        <!-- SAVE + LIST -->
+    </children>
+</HBox>
